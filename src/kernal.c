@@ -18,7 +18,10 @@ void setnam(char namelength, char *name)
 
 void open()
 {
-    asm("jsr ffc0");
+    asm(
+        "jsr ffc0"
+        ::: "a", "x", "y"
+    );
 }
 
 char chrin()
@@ -30,7 +33,7 @@ char chrin()
         "sta %[result]"
         : [result] "=m"(result)
     );
-    
+
     return result;
 }
 
