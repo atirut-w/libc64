@@ -19,7 +19,7 @@ void setnam(char namelength, char *name)
 void open()
 {
     asm(
-        "jsr ffc0"
+        "jsr $ffc0"
         ::: "a", "x", "y"
     );
 }
