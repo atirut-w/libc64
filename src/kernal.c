@@ -3,11 +3,13 @@
 char chrin()
 {
     char result;
+
     asm(
         "jsr $ffcf\n"
         "sta %[result]"
         : [result] "=m"(result)
     );
+    
     return result;
 }
 
