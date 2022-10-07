@@ -41,3 +41,18 @@ void chrout(char c)
 {
     asm("jsr $ffd2");
 }
+
+exec_result_t screen()
+{
+    exec_result_t result;
+
+    asm(
+        "jsr $ffed\n"
+        "stx %[col]\n"
+        "sty %[row]\n"
+        : [col] "=r" (result.x), [row] "=r" (result.y)
+        :: "x", "y"
+    );
+
+    return result;
+}
